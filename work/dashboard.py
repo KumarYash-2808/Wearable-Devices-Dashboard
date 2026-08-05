@@ -1,16 +1,17 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
-
+import pathlib as path
 st.set_page_config(page_title="📊 Wearable Devices Dashboard", layout="wide")
 st.title("📱 Wearable Devices Data Dashboard")
 
-DATA_PATH = "data/wearable_devices.csv"
+base_dir = path(__file__).resolve.parent.parent
+CSV_PATH = base_dir / "data" / "wearable_devices.csv"
 
 try:
-    device_data = pd.read_csv("../data/wearable_devices.csv")
+    device_data = pd.read_csv(CSV_PATH)
 except FileNotFoundError:
-    st.error(f"CSV not found at: {DATA_PATH}")
+    st.error(f"CSV not found at: {CSV_PATH}")
     st.stop()
 device_data['Test_Date'] = pd.to_datetime(device_data['Test_Date'], format='mixed', dayfirst=True, errors='coerce')
 
