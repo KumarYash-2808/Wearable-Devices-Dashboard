@@ -5,7 +5,7 @@ from pathlib import Path
 st.set_page_config(page_title="📊 Wearable Devices Dashboard", layout="wide")
 st.title("📱 Wearable Devices Data Dashboard")
 
-base_dir = Path(__file__).resolve.parent.parent
+base_dir = Path(__file__).resolve().parent.parent
 CSV_PATH = base_dir / "data" / "wearable_devices.csv"
 
 try:
